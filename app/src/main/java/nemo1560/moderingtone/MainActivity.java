@@ -89,6 +89,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         new AlarmUtil(activity).OffRingtone(alarmManager,newTime);
                     }else {
                         int tomorrow = date+1;
+                        newTime.set(Calendar.DAY_OF_MONTH,tomorrow);
                         newTime.set(Calendar.HOUR_OF_DAY,selectedHour);
                         newTime.set(Calendar.MINUTE, selectedMinute);
                         editor.putLong("offTime",newTime.getTimeInMillis()).commit();
@@ -120,6 +121,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         new AlarmUtil(activity).OnRingtone(alarmManager,newTime);
                     }else {
                         int tomorrow = date+1;
+                        newTime.set(Calendar.DAY_OF_MONTH,tomorrow);
                         newTime.set(Calendar.HOUR_OF_DAY,selectedHour);
                         newTime.set(Calendar.MINUTE, selectedMinute);
                         editor.putLong("onTime",newTime.getTimeInMillis()).commit();

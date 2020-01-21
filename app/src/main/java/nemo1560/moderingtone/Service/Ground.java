@@ -42,12 +42,12 @@ public class Ground extends BaseService {
             AlarmManager alarmManager = (AlarmManager) getBaseContext().getSystemService(Context.ALARM_SERVICE);
             Calendar current = Calendar.getInstance();
             int currentDay = current.get(Calendar.DAY_OF_MONTH);
-            int offDay = getInt("offDay",0);
-            int offHour = getInt("offHour",0);
-            int offMinute = getInt("offMinute",0);
-            int onDay = getInt("onDay",0);
-            int onHour = getInt("onHour",0);
-            int onMinute = getInt("onMinute",0);
+            int offDay = getInt("offDay",-1);
+            int offHour = getInt("offHour",-1);
+            int offMinute = getInt("offMinute",-1);
+            int onDay = getInt("onDay",-1);
+            int onHour = getInt("onHour",-1);
+            int onMinute = getInt("onMinute",-1);
             Log.d(TAG,currentDay+" "+offDay+" "+onDay+"");
             //repeat
             if(currentDay > offDay){
@@ -58,8 +58,8 @@ public class Ground extends BaseService {
                 off.set(Calendar.MINUTE, offMinute);
                 editor.putLong("offTime",off.getTimeInMillis()).commit();
             }
-            Long off = getLong("offTime", (long) 0);
-            if(off != 0){
+            Long off = getLong("offTime", (long) -1);
+            if(off != 0 && current.getTimeInMillis() == off){
                 new AlarmUtil(getBaseContext()).OffRingtone(alarmManager,off);
             }
 
@@ -71,8 +71,8 @@ public class Ground extends BaseService {
                 on.set(Calendar.MINUTE, onMinute);
                 editor.putLong("onTime",on.getTimeInMillis());
             }
-            Long on = getLong("onTime", (long) 0);
-            if(on != 0){
+            Long on = getLong("onTime", (long) -1);
+            if(on != 0 && current.getTimeInMillis() == on){
                 new AlarmUtil(getBaseContext()).OnRingtone(alarmManager,on);
             }
 

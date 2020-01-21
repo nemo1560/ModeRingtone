@@ -8,7 +8,9 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -19,6 +21,7 @@ import android.os.IBinder;
 import androidx.core.app.NotificationCompat;
 
 import nemo1560.moderingtone.MainActivity;
+import nemo1560.moderingtone.R;
 
 public class BaseService extends Service {
     private final String CHANNEL_ID = "my_weather_01";
@@ -88,7 +91,7 @@ public class BaseService extends Service {
                 notificationChannel = new NotificationChannel(CHANNEL_ID,CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH);
                 notificationChannel.enableLights(true);
                 notificationChannel.enableVibration(true);
-                notificationChannel.setLightColor(Color.GREEN);
+                notificationChannel.setLightColor(Color.RED);
                 notificationChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
 
                 notificationManager.createNotificationChannel(notificationChannel);
@@ -120,7 +123,7 @@ public class BaseService extends Service {
                 cbuilder = new NotificationCompat.Builder(this);
                 cbuilder.setContentTitle(title)
                         .setContentText(temp)
-                        .setSmallIcon(icon)
+                        .setSmallIcon(R.mipmap.ic_icon_round)
                         .setLargeIcon(textAsBitmap(temp, (float) 30, Color.BLACK))
                         .setPriority(NotificationCompat.PRIORITY_HIGH)
                         .setDefaults(NotificationCompat.DEFAULT_ALL)

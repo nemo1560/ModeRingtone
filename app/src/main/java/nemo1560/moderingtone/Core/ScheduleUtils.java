@@ -8,8 +8,6 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
-import nemo1560.moderingtone.Service.JobSchedule;
-
 public class ScheduleUtils {
 
     @RequiresApi(api = Build.VERSION_CODES.M)

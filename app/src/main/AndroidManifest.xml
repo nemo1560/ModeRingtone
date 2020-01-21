@@ -24,7 +24,7 @@
         <service android:name=".Service.OnRingTone" android:enabled="true"/>
         <service android:name=".Service.OffRingTone" android:enabled="true"/>
         <service
-            android:name=".Service.JobSchedule"
+            android:name=".Core.JobSchedule"
             android:label="again"
             android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>

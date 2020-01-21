@@ -59,6 +59,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @SuppressLint({"HardwareIds", "NewApi", "MissingPermission"})
     private void init() {
+        if(getInt("offHour",-1) != -1 && getInt("offMinute",-1) != -1){
+            off.setText("Tắt chuông lúc "+getInt("offHour",0)+":"+getInt("offMinute",0));
+        }
+        if(getInt("onHour",-1) != -1 && getInt("onMinute",-1) != -1){
+            on.setText("Mở chuông lúc "+getInt("onHour",0)+":"+getInt("onMinute",0));
+        }
+
         on.setOnClickListener(this);
         off.setOnClickListener(this);
     }
@@ -86,18 +93,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         editor.putInt("offDay",date).commit();
                         Log.d(TAG,date+" "+hour+" "+minute);
                         Toast.makeText(activity,"Bạn chọn tắt chuông lúc "+selectedHour+":"+selectedMinute,Toast.LENGTH_SHORT).show();
+                        off.setText("Tắt chuông lúc "+getInt("offHour",0)+":"+getInt("offMinute",-1));
                         new AlarmUtil(activity).OffRingtone(alarmManager,newTime);
                     }else {
                         int tomorrow = date+1;
-                        newTime.set(Calendar.DAY_OF_MONTH,tomorrow);
                         newTime.set(Calendar.HOUR_OF_DAY,selectedHour);
                         newTime.set(Calendar.MINUTE, selectedMinute);
+                        newTime.set(Calendar.DAY_OF_MONTH,tomorrow);
                         editor.putLong("offTime",newTime.getTimeInMillis()).commit();
                         editor.putInt("offHour",selectedHour).commit();
                         editor.putInt("offMinute",selectedMinute).commit();
                         editor.putInt("offDay",tomorrow).commit();
                         Log.d(TAG,tomorrow+" "+hour+" "+minute);
                         Toast.makeText(activity,"Bạn chọn tắt chuông lúc "+selectedHour+":"+selectedMinute,Toast.LENGTH_SHORT).show();
+                        off.setText("Tắt chuông lúc "+getInt("offHour",0)+":"+getInt("offMinute",-1));
                         new AlarmUtil(activity).OffRingtone(alarmManager,newTime);
                     }
 
@@ -118,18 +127,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
                         editor.putInt("onDay",date).commit();
                         Log.d(TAG,date+" "+hour+" "+minute);
                         Toast.makeText(activity,"Bạn chọn bật chuông lúc "+selectedHour+":"+selectedMinute,Toast.LENGTH_SHORT).show();
+                        on.setText("Mở chuông lúc "+getInt("onHour",0)+":"+getInt("onMinute",-1));
                         new AlarmUtil(activity).OnRingtone(alarmManager,newTime);
                     }else {
                         int tomorrow = date+1;
-                        newTime.set(Calendar.DAY_OF_MONTH,tomorrow);
                         newTime.set(Calendar.HOUR_OF_DAY,selectedHour);
                         newTime.set(Calendar.MINUTE, selectedMinute);
+                        newTime.set(Calendar.DAY_OF_MONTH,tomorrow);
                         editor.putLong("onTime",newTime.getTimeInMillis()).commit();
                         editor.putInt("onHour",selectedHour).commit();
                         editor.putInt("onMinute",selectedMinute).commit();
                         editor.putInt("onDay",tomorrow).commit();
                         Log.d(TAG,tomorrow+" "+hour+" "+minute);
                         Toast.makeText(activity,"Bạn chọn bật chuông lúc "+selectedHour+":"+selectedMinute,Toast.LENGTH_SHORT).show();
+                        on.setText("Mở chuông lúc "+getInt("onHour",0)+":"+getInt("onMinute",-1));
                         new AlarmUtil(activity).OnRingtone(alarmManager,newTime);
                     }
                 }

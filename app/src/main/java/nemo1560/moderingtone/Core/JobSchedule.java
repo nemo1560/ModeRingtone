@@ -18,6 +18,7 @@ public class JobSchedule extends JobService {
     public boolean onStartJob(JobParameters params) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             if (!isMyServiceRunning(Ground.class)) {
+                getApplicationContext().stopService(new Intent(getApplicationContext(), Ground.class));
                 getApplicationContext().startForegroundService(new Intent(getApplicationContext(), Ground.class));
             } else {
                 getApplicationContext().startService(new Intent(getApplicationContext(), Ground.class));

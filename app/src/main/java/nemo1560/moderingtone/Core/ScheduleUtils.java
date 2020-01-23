@@ -14,11 +14,11 @@ public class ScheduleUtils {
     public static void ScheduleUtils(Context context) {
         ComponentName componentName = new ComponentName(context, JobSchedule.class);
         JobInfo.Builder job = new JobInfo.Builder(0,componentName);
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             job.setMinimumLatency(1*1000);
-            job.setOverrideDeadline(5*1000);
+            job.setOverrideDeadline(1*1000);
         }else {
-            job.setPeriodic(5*1000);
+            job.setPeriodic(1*1000);
         }
         JobScheduler schedule = null;
         schedule = context.getSystemService(JobScheduler.class);

@@ -19,7 +19,7 @@ public class OnRingTone extends BaseService {
     }
 
     private void send(String ok){
-        if(ok != null){
+        if(ok.equalsIgnoreCase("OK")){
             clearName("onTime");
             setNotification("Chế độ chuông","Đã bật chuông", R.mipmap.ic_icon);
         }
@@ -41,10 +41,11 @@ public class OnRingTone extends BaseService {
         AudioManager am = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
         if(am.getRingerMode() == AudioManager.RINGER_MODE_VIBRATE) {
             am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+            send("OK");
         }else {
             am.setRingerMode(AudioManager.RINGER_MODE_NORMAL);
+            send("Had");
         }
-        send("OK");
     }
 
     @Override

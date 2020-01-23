@@ -44,14 +44,15 @@ public class OffRingTone extends BaseService {
         AudioManager am = (AudioManager)getSystemService(Context.AUDIO_SERVICE);
         if(am.getRingerMode() == AudioManager.RINGER_MODE_NORMAL) {
             am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+            send("OK");
         }else {
             am.setRingerMode(AudioManager.RINGER_MODE_VIBRATE);
+            send("Had");
         }
-        send("OK");
     }
 
     private void send(String ok) {
-        if(ok != null){
+        if(ok.equalsIgnoreCase("OK")){
             clearName("offTime");
             setNotification("Chế độ rung","Đã tắt chuông", R.mipmap.ic_icon);
         }

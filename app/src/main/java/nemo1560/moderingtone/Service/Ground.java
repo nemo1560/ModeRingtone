@@ -65,7 +65,7 @@ public class Ground extends BaseService {
                     editor.putInt("offMinute",offMinute).commit();
                     editor.putInt("offDay",offDay).commit();
                     editor.putLong("offTime",off.getTimeInMillis()).commit();
-                }else if(getLong("offTime", (long) 0) == 0){
+                }/*else if(getLong("offTime", (long) 0) == 0){
                     Calendar off = Calendar.getInstance();
                     off.set(Calendar.DAY_OF_MONTH,offDay);
                     off.set(Calendar.HOUR_OF_DAY,offHour);
@@ -74,7 +74,7 @@ public class Ground extends BaseService {
                     editor.putInt("offMinute",offMinute).commit();
                     editor.putInt("offDay",offDay).commit();
                     editor.putLong("offTime",off.getTimeInMillis()).commit();
-                }
+                }*/
                 Long off = getLong("offTime", (long) 0);
                 if(off != 0){
                     new AlarmUtil(getBaseContext()).OffRingtone(alarmManager,off);
@@ -90,7 +90,7 @@ public class Ground extends BaseService {
                     editor.putInt("onMinute",onMinute).commit();
                     editor.putInt("onDay",onDay).commit();
                     editor.putLong("onTime",on.getTimeInMillis()).commit();
-                }else if(getLong("onTime", (long) 0) == 0){
+                }/*else if(getLong("onTime", (long) 0) == 0){
                     Calendar on = Calendar.getInstance();
                     on.set(Calendar.DAY_OF_MONTH,onDay);
                     on.set(Calendar.HOUR_OF_DAY,onHour);
@@ -99,7 +99,7 @@ public class Ground extends BaseService {
                     editor.putInt("onMinute",onMinute).commit();
                     editor.putInt("onDay",onDay).commit();
                     editor.putLong("onTime",on.getTimeInMillis()).commit();
-                }
+                }*/
                 Long on = getLong("onTime", (long) 0);
                 if(on != 0){
                     new AlarmUtil(getBaseContext()).OnRingtone(alarmManager,on);

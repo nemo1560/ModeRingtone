@@ -59,10 +59,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     @SuppressLint({"HardwareIds", "NewApi", "MissingPermission"})
     private void init() {
-        if(getInt("offHour",-1) != -1 && getInt("offMinute",-1) != -1 && getLong("offTime", (long) 0) != 0){
+        if(getInt("offHour",-1) != -1 && getInt("offMinute",-1) != -1 /*&& getLong("offTime", (long) 0) != 0*/){
             off.setText("Tắt chuông lúc "+getInt("offHour",0)+":"+getInt("offMinute",0));
         }
-        if(getInt("onHour",-1) != -1 && getInt("onMinute",-1) != -1 && getLong("onTime", (long) 0) != 0){
+        if(getInt("onHour",-1) != -1 && getInt("onMinute",-1) != -1 /*&& getLong("onTime", (long) 0) != 0*/){
             on.setText("Mở chuông lúc "+getInt("onHour",0)+":"+getInt("onMinute",0));
         }
 

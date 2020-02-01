@@ -55,7 +55,7 @@ public class Ground extends BaseService {
                 int onMinute = getInt("onMinute",-1);
                 Log.d(TAG,currentDay+" "+offDay+" "+onDay+"");
                 //repeat
-                if(currentDay > offDay){
+                if(currentDay != offDay){
                     Calendar off = Calendar.getInstance();
                     offDay = currentDay;
                     off.set(Calendar.DAY_OF_MONTH,offDay);
@@ -80,7 +80,7 @@ public class Ground extends BaseService {
                     new AlarmUtil(getBaseContext()).OffRingtone(alarmManager,off);
                 }
 
-                if(currentDay > onDay){
+                if(currentDay != onDay){
                     Calendar on = Calendar.getInstance();
                     onDay = currentDay;
                     on.set(Calendar.DAY_OF_MONTH,onDay);
